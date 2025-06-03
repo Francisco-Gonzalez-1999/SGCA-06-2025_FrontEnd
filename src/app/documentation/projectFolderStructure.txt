@@ -1,0 +1,51 @@
+nutri-conecta-mc/
+│── src/
+│   │── app/
+│   │   │── core/               👈 (Módulos y servicios centrales)
+│   │   │   ├── services/       (Servicios compartidos, API, auth, etc.)
+│   │   │   ├── guards/         (AuthGuard, permisos)
+│   │   │   ├── interceptors/   (Interceptors de HTTP)
+│   │   │   ├── models/         (Interfaces y modelos de datos)
+│   │   │   ├── core.module.ts
+│   │   │
+│   │   │── shared/             👈 (Componentes y directivas reutilizables)
+│   │   │   ├── components/     (Botones, modales, loaders, etc.)
+│   │   │   ├── pipes/          (Pipes personalizados)
+│   │   │   ├── directives/     (Directivas reutilizables)
+│   │   │   ├── shared.module.ts
+│   │   │
+│   │   │── modules/            👈 (Módulos funcionales)
+│   │   │   ├── landing-page/   (Módulo de la página de inicio)
+│   │   │   │   ├── components/ (Secciones reutilizables)
+│   │   │   │   ├── pages/      (Vista principal de la landing)
+│   │   │   │   ├── landing-page.module.ts
+│   │   │   │
+│   │   │   ├── appointments/   (Módulo de citas)
+│   │   │   │   ├── components/
+│   │   │   │   ├── pages/
+│   │   │   │   ├── services/
+│   │   │   │   ├── appointments.module.ts
+│   │   │   │
+│   │   │   ├── blog/           (Módulo del blog de nutrición)
+│   │   │   │   ├── components/
+│   │   │   │   ├── pages/
+│   │   │   │   ├── services/
+│   │   │   │   ├── blog.module.ts
+│   │   │   │
+│   │   │   ├── admin/          (Módulo del panel administrativo)
+│   │   │   │   ├── components/
+│   │   │   │   ├── pages/
+│   │   │   │   ├── services/
+│   │   │   │   ├── admin.module.ts
+│   │   │
+│   │   │── app-routing.module.ts
+│   │   │── app.module.ts
+│   │
+│   │── assets/                 👈 (Imágenes, íconos, estilos globales)
+│   │── environments/           👈 (Configuraciones para dev/prod)
+│   │── main.ts
+│   │── styles.scss             👈 (Estilos globales)
+│
+│── angular.json
+│── package.json
+│── tsconfig.json
