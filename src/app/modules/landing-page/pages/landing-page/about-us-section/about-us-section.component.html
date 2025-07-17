@@ -1,0 +1,80 @@
+<section class="relative py-16 md:py-24 bg-gradient-to-b from-surface-50 to-surface-100 dark:from-surface-800 dark:to-surface-900 overflow-hidden">
+  <!-- Elementos decorativos -->
+  <div class="absolute top-0 left-0 w-full h-full opacity-10 dark:opacity-5">
+    <div class="absolute top-20 left-10 w-40 h-40 bg-primary-500 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-60 h-60 bg-secondary-500 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 relative z-10">
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <p class="text-primary-500 font-semibold mb-3">SOBRE NOSOTROS</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-surface-900 dark:text-surface-100 mb-4">Más que una agencia de autos</h2>
+      <p-divider align="center" type="dashed" class="w-20 mx-auto"></p-divider>
+      <p class="text-lg text-surface-600 dark:text-surface-300 max-w-3xl mx-auto mt-6">
+        En <span class="font-bold text-primary-500">[Nombre de tu Agencia]</span>, nos apasiona conectar a las personas con sus autos seminuevos ideales, ofreciendo transparencia, calidad y servicio excepcional.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Columna izquierda (imagen) -->
+      <div class="relative">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+            alt="Nuestro equipo"
+            class="w-full h-auto object-cover aspect-video"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-900/70 to-transparent flex items-end p-6">
+            <div class="text-surface-0">
+              <p class="text-sm">EQUIPO CERTIFICADO</p>
+              <h3 class="text-2xl font-bold">Profesionales apasionados por los autos</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="grid grid-cols-3 gap-4 mt-8">
+          <div *ngFor="let stat of stats" class="bg-surface-0 dark:bg-surface-800 p-6 rounded-xl shadow-md text-center">
+            <p class="text-3xl font-bold text-primary-500 mb-2">{{ stat.value }}</p>
+            <p class="text-sm text-surface-600 dark:text-surface-300">{{ stat.label }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha (contenido) -->
+      <div>
+        <h3 class="text-2xl font-bold text-surface-900 dark:text-surface-100 mb-6">Nuestra historia</h3>
+        <p class="text-surface-600 dark:text-surface-300 mb-6">
+          Fundada en 2010, comenzamos como un pequeño lote de autos con una visión clara: revolucionar el mercado de autos seminuevos mediante la transparencia y la calidad. Hoy somos líderes en el sector, gracias a nuestro compromiso inquebrantable con la satisfacción del cliente.
+        </p>
+
+        <h3 class="text-2xl font-bold text-surface-900 dark:text-surface-100 mb-6">Nuestra misión</h3>
+        <p class="text-surface-600 dark:text-surface-300 mb-8">
+          Proporcionar autos seminuevos de la más alta calidad con un proceso de compra sencillo, transparente y libre de estrés, respaldado por un servicio postventa excepcional.
+        </p>
+
+        <!-- Características -->
+        <div class="space-y-6">
+          <div *ngFor="let feature of features" class="flex gap-4">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+              <i [class]="feature.icon + ' text-primary-500 text-xl'"></i>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-surface-900 dark:text-surface-100 mb-2">{{ feature.title }}</h4>
+              <p class="text-surface-600 dark:text-surface-300">{{ feature.description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón -->
+        <button
+          pButton
+          label="Conoce nuestro equipo"
+          icon="pi pi-users"
+          class="mt-10 p-button-rounded p-button-lg">
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

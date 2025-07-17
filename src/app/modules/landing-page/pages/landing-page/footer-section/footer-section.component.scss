@@ -1,0 +1,14 @@
+/* Estilos adicionales personalizados si los necesitas */
+footer {
+  a {
+    transition: color 0.2s ease;
+  }
+
+  input:focus {
+    box-shadow: 0 0 0 2px rgba(var(--primary-500-rgb), 0.2);
+  }
+
+  button {
+    transition: background-color 0.2s ease;
+  }
+}

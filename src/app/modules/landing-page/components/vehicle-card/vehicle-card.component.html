@@ -1,0 +1,47 @@
+<p-card [header]="vehicle?.model" [subheader]="vehicle?.brand"
+       class="shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+  <div class="relative">
+    <img [src]="vehicle?.image" [alt]="vehicle?.model" class="w-full h-48 object-cover rounded-t-lg">
+    <p-tag *ngIf="vehicle?.featured" value="Destacado" severity="danger" class="absolute top-2 right-2"></p-tag>
+    <p-tag *ngIf="vehicle?.promo" [value]="vehicle?.promo" severity="success" class="absolute top-2 left-2"></p-tag>
+  </div>
+
+  <div class="flex-grow p-4">
+    <div class="flex justify-between items-center mb-3">
+      <span class="text-xl font-bold text-primary-500">{{ vehicle?.price | currency }}</span>
+      <span class="text-sm text-surface-500">{{ vehicle?.year }}</span>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2 mb-4 text-sm">
+      <div class="flex items-center gap-1">
+        <i class="pi pi-tachometer-alt text-surface-500"></i>
+        <span>{{ vehicle?.mileage }} km</span>
+      </div>
+      <div class="flex items-center gap-1">
+        <i class="pi pi-car text-surface-500"></i>
+        <span>{{ vehicle?.transmission }}</span>
+      </div>
+      <div class="flex items-center gap-1">
+        <i class="pi pi-palette text-surface-500"></i>
+        <span>{{ vehicle?.color }}</span>
+      </div>
+      <div class="flex items-center gap-1">
+        <i class="pi pi-cog text-surface-500"></i>
+        <span>{{ vehicle?.fuelType }}</span>
+      </div>
+    </div>
+
+    <p *ngIf="showDetails" class="text-surface-600 text-sm line-clamp-2 mb-4">
+      {{ vehicle?.description }}
+    </p>
+  </div>
+
+  <div class="p-4 pt-0">
+    <button pButton
+            label="Ver detalles"
+            icon="pi pi-search"
+            class="w-full p-button-sm"
+            [routerLink]="['/inventory', vehicle?.id]">
+    </button>
+  </div>
+</p-card>
