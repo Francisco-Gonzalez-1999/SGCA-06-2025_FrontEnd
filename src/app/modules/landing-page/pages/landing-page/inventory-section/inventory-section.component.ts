@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
 import { VehicleCardComponent } from '../../../components/vehicle-card/vehicle-card.component';
 import { ButtonModule } from 'primeng/button';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-inventory-section',
   standalone: true,
@@ -11,7 +11,8 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     CarouselModule,
     VehicleCardComponent,
-    ButtonModule
+    ButtonModule,
+    RouterLink
   ],
   templateUrl: './inventory-section.component.html',
   styleUrls: ['./inventory-section.component.scss']

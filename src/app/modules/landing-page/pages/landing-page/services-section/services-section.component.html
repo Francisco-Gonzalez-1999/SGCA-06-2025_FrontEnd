@@ -1,5 +1,6 @@
 <section id="services" class="py-12 md:py-20 bg-surface-50 dark:bg-surface-800 px-4">
-  <div class="max-w-7xl mx-auto">
+  <!-- <div class="max-w-7xl mx-auto"> -->
+  <div class="w-full max-w-3/4">
     <div pAnimateOnScroll enterClass="fadein" class="text-center mb-16">
       <h2 class="text-4xl md:text-5xl font-bold text-surface-900 dark:text-surface-100 mb-4">Nuestros Servicios</h2>
       <p class="text-xl text-surface-600 dark:text-surface-300 max-w-3xl mx-auto">
@@ -7,7 +8,7 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       <ng-container *ngFor="let service of services">
         <p-card
           pAnimateOnScroll [enterClass]="service.animation"

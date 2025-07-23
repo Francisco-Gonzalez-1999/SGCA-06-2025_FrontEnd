@@ -1,0 +1,148 @@
+<section class="py-8 md:py-12 bg-surface-0 dark:bg-surface-900 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-surface-900 dark:text-surface-100 mb-3">Inventario Completo</h1>
+      <p class="text-lg text-surface-600 dark:text-surface-300 max-w-3xl mx-auto">
+        Explora nuestra completa selección de vehículos seminuevos certificados
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <!-- Filters Section -->
+      <div class="lg:col-span-1">
+        <p-card header="Filtros" class="shadow-sm">
+          <div class="flex flex-col gap-4">
+            <!-- Search -->
+            <div>
+              <label for="search" class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1">Buscar</label>
+              <input
+                id="search"
+                type="text"
+                pInputText
+                [(ngModel)]="searchText"
+                placeholder="Marca, modelo..."
+                class="w-full">
+            </div>
+
+            <!-- Price Range -->
+            <div>
+              <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1">
+                Rango de precio: ${{priceRange[0] | number}} - ${{priceRange[1] | number}}
+              </label>
+              <p-slider [(ngModel)]="priceRange" [range]="true" [min]="0" [max]="50000" [step]="1000"></p-slider>
+            </div>
+
+            <!-- Year Range -->
+            <div>
+              <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1">
+                Año: {{yearRange[0]}} - {{yearRange[1]}}
+              </label>
+              <p-slider [(ngModel)]="yearRange" [range]="true" [min]="2015" [max]="2023"></p-slider>
+            </div>
+
+            <!-- Brand Filter -->
+            <div>
+              <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1">Marca</label>
+              <p-multiSelect
+                [(ngModel)]="selectedBrands"
+                [options]="brands"
+                placeholder="Todas las marcas"
+                display="chip"
+                class="w-full"></p-multiSelect>
+            </div>
+
+            <!-- Fuel Type Filter -->
+            <div>
+              <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1">Tipo de combustible</label>
+              <p-multiSelect
+                [(ngModel)]="selectedFuelTypes"
+                [options]="fuelTypes"
+                placeholder="Todos los tipos"
+                display="chip"
+                class="w-full"></p-multiSelect>
+            </div>
+
+            <!-- Transmission Filter -->
+            <div>
+              <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1">Transmisión</label>
+              <p-multiSelect
+                [(ngModel)]="selectedTransmissions"
+                [options]="transmissions"
+                placeholder="Todas las transmisiones"
+                display="chip"
+                class="w-full"></p-multiSelect>
+            </div>
+
+            <!-- Color Filter -->
+            <div>
+              <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1">Color</label>
+              <p-multiSelect
+                [(ngModel)]="selectedColors"
+                [options]="colors"
+                placeholder="Todos los colores"
+                display="chip"
+                class="w-full"></p-multiSelect>
+            </div>
+
+            <!-- Reset Button -->
+            <div class="mt-4">
+              <button
+                pButton
+                label="Restablecer filtros"
+                icon="pi pi-refresh"
+                class="w-full p-button-outlined"
+                (click)="resetFilters()"></button>
+            </div>
+          </div>
+        </p-card>
+      </div>
+
+      <!-- Results Section -->
+      <div class="lg:col-span-3">
+        <!-- Sorting and Results Count -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+          <div class="text-surface-600 dark:text-surface-300">
+            Mostrando {{first + 1}} - {{first + rows > totalRecords ? totalRecords : first + rows}} de {{totalRecords}} vehículos
+          </div>
+          <div class="flex items-center gap-2">
+            <label for="sort" class="text-sm text-surface-600 dark:text-surface-300">Ordenar por:</label>
+            <p-dropdown
+              [(ngModel)]="selectedSort"
+              [options]="sortOptions"
+              optionLabel="label"
+              optionValue="value"
+              id="sort"></p-dropdown>
+          </div>
+        </div>
+
+        <!-- Vehicles Grid -->
+        <div *ngIf="filteredVehicles.length > 0; else noResults" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div *ngFor="let vehicle of filteredVehicles" class="h-full">
+            <app-vehicle-card [vehicle]="vehicle" [showDetails]="true"></app-vehicle-card>
+          </div>
+        </div>
+
+        <!-- No Results Message -->
+        <ng-template #noResults>
+          <p-card class="text-center">
+            <div class="py-8">
+              <i class="pi pi-search text-4xl text-surface-400 mb-3"></i>
+              <h3 class="text-xl font-medium text-surface-800 dark:text-surface-200 mb-2">No se encontraron vehículos</h3>
+              <p class="text-surface-600 dark:text-surface-300">Intenta ajustar tus filtros de búsqueda</p>
+            </div>
+          </p-card>
+        </ng-template>
+
+        <!-- Pagination -->
+        <div class="mt-6" *ngIf="totalRecords > rows">
+          <p-paginator
+            [first]="first"
+            [rows]="rows"
+            [totalRecords]="totalRecords"
+            (onPageChange)="onPageChange($event)"
+            [rowsPerPageOptions]="[9, 18, 36]"></p-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
